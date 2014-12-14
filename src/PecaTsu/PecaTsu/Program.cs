@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PecaTsu.Entity;
+using PecaTsu.Logic;
 
 namespace PecaTsu
 {
@@ -10,6 +7,10 @@ namespace PecaTsu
 	{
 		static void Main(string[] args)
 		{
+			// SQL接続の初期化
+			SqlRequest.init();
+
+			string text = Channel.selectChannelID("あれくま");
 		}
 	}
 }
