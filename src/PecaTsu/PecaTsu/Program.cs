@@ -1,5 +1,6 @@
 ﻿using PecaTsu.Entity;
 using PecaTsu.Logic;
+using System.Collections.Generic;
 
 namespace PecaTsu
 {
@@ -10,7 +11,8 @@ namespace PecaTsu
 			// SQL接続の初期化
 			SqlRequest.init();
 
-			string text = Channel.selectChannelID("あれくま");
+			List<YP> list = YP.selectYPList();
+			string text = Channel.selectChannelID("しっかりシュールｃｈ");
 		}
 	}
 }

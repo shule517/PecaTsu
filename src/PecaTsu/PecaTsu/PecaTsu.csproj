@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Entity\Channel.cs" />
     <Compile Include="Entity\ChannelHistory.cs" />
+    <Compile Include="Entity\YP.cs" />
     <Compile Include="Logic\SqlRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,10 +56,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Settings\DBAccess.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
