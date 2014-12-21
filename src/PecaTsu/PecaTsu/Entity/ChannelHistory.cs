@@ -58,7 +58,10 @@ ORDER BY
 			return history;
 		}
 
-		public static List<ChannelHistory> select()
+		/// <summary>
+		/// 当日のチャンネル情報を取得
+		/// </summary>
+		public static List<ChannelHistory> selectByToDay()
 		{
 			string date = DateTime.Now.ToString("yyyyMMdd");
 			string sql = string.Format("SELECT date, time_from, time_to, channel_id, yp_id, channel_name, stream_id, tip, contact_url, genre, detail, listener, relay, bitrate, stream_type, artist, album, title, url, encoded_name, time, alt, comment, direct, update_time FROM channel_history WHERE date = '{0}'", date);
@@ -184,6 +187,37 @@ ORDER BY
 			direct = data[i]; i++;
 			//update_time = data[i]; i++;
 		}
+
+		public ChannelHistory(YP yp, string[] data)
+		{
+			int i = 0;
+			//date = data[i++];
+			//time_from = data[i++];
+			//time_to = data[i++];
+			//channel_id = data[i++];
+			yp_id = yp.yp_id;
+			channel_name = data[i++];
+			stream_id = data[i++];
+			tip = data[i++];
+			contact_url = data[i++];
+			genre = data[i++];
+			detail = data[i++];
+			listener = data[i++];
+			relay = data[i++];
+			bitrate = data[i++];
+			stream_type = data[i++];
+			artist = data[i++];
+			album = data[i++];
+			title = data[i++];
+			url = data[i++];
+			encoded_name = data[i++];
+			time = data[i++];
+			alt = data[i++];
+			comment = data[i++];
+			direct = data[i++];
+			//update_time = data[i++];
+		}
+
 		public string date { get; set; }
 		public string time_from { get; set; }
 		public string time_to { get; set; }
@@ -209,6 +243,11 @@ ORDER BY
 		public string comment { get; set; }
 		public string direct { get; set; }
 		public string update_time { get; set; }
+
+		/// <summary>
+		/// YP情報の場合true
+		/// </summary>
+		public bool IsYPInfo { get { return listener == "-9"; } }
 
 		public bool equal(ChannelHistory channel)
 		{

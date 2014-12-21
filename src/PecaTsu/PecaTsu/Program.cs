@@ -11,8 +11,9 @@ namespace PecaTsu
 			// SQL接続の初期化
 			SqlRequest.init();
 
-			List<YP> list = YP.selectYPList();
-			string text = Channel.selectChannelID("しっかりシュールｃｈ");
+			// YPデータ取り込み
+			YPLoader loader = new YPLoader();
+			loader.load();
 		}
 	}
 }

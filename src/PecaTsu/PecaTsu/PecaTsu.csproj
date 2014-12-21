@@ -49,6 +49,7 @@
     <Compile Include="Entity\ChannelHistory.cs" />
     <Compile Include="Entity\YP.cs" />
     <Compile Include="Logic\SqlRequest.cs" />
+    <Compile Include="Logic\YPLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
