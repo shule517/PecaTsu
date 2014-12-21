@@ -6,6 +6,10 @@ namespace PecaTsu.Entity
 {
 	class ChannelHistory
 	{
+		public ChannelHistory()
+		{
+		}
+
 		public void update(ChannelHistory history)
 		{
 			string time_to = DateTime.Now.ToString("HHmmss");
@@ -47,15 +51,13 @@ WHERE
 	AND	channel_name = '{1}'
 ORDER BY
 	update_time DESC", date, channelName);
-			List<List<string>> result = SqlRequest.requestSql(sql);
-			if (result.Count == 0)
+
+			List<ChannelHistory> result = SqlRequest.requestSql<ChannelHistory>(sql);
+			if (result.Count > 0)
 			{
-				return null;
+				return result[0];
 			}
-
-			ChannelHistory history = new ChannelHistory(result[0].ToArray(), true);
-
-			return history;
+			return null;
 		}
 
 		/// <summary>
@@ -65,17 +67,7 @@ ORDER BY
 		{
 			string date = DateTime.Now.ToString("yyyyMMdd");
 			string sql = string.Format("SELECT date, time_from, time_to, channel_id, yp_id, channel_name, stream_id, tip, contact_url, genre, detail, listener, relay, bitrate, stream_type, artist, album, title, url, encoded_name, time, alt, comment, direct, update_time FROM channel_history WHERE date = '{0}'", date);
-			List<List<string>> result = SqlRequest.requestSql(sql);
-
-			List<ChannelHistory> list = new List<ChannelHistory>();
-			foreach (var data in result)
-			{
-				string[] element = data.ToArray();
-				ChannelHistory history = new ChannelHistory(element);
-				list.Add(history);
-			}
-
-			return list;
+			return SqlRequest.requestSql<ChannelHistory>(sql);
 		}
 
 		public void insert()
@@ -86,67 +78,6 @@ ORDER BY
 			time_to = DateTime.Now.ToString("HHmmss");
 			string sql = string.Format("INSERT IGNORE INTO channel_history (date,time_from,time_to,channel_id,yp_id,channel_name,stream_id,tip,contact_url,genre,detail,listener,relay,bitrate,stream_type,artist,album,title,url,encoded_name,time,alt,comment,direct) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}','{21}','{22}','{23}')", date, time_from, time_to, channel_id, yp_id, channel_name, stream_id, tip, contact_url, genre, detail, listener, relay, bitrate, stream_type, artist, album, title, url, encoded_name, time, alt, comment, direct);
 			SqlRequest.requestSql(sql);
-		}
-
-		public ChannelHistory(string[] data, bool test)
-		{
-			int i = 0;
-			date = data[i++];
-			time_from = data[i++];
-			time_to = data[i++];
-			channel_id = data[i++];
-			yp_id = data[i++];
-			channel_name = data[i++];
-			stream_id = data[i++];
-			tip = data[i++];
-			contact_url = data[i++];
-			genre = data[i++];
-			detail = data[i++];
-			listener = data[i++];
-			relay = data[i++];
-			bitrate = data[i++];
-			stream_type = data[i++];
-			artist = data[i++];
-			album = data[i++];
-			title = data[i++];
-			url = data[i++];
-			encoded_name = data[i++];
-			time = data[i++];
-			alt = data[i++];
-			comment = data[i++];
-			direct = data[i++];
-			update_time = data[i++];
-		}
-
-
-		public ChannelHistory(string[] data)
-		{
-			int i = 0;
-			//date = data[i++];
-			//time_from = data[i++];
-			//time_to = data[i++];
-			//channel_id = data[i++];
-			//yp_id = data[i++];
-			channel_name = data[i++];
-			stream_id = data[i++];
-			tip = data[i++];
-			contact_url = data[i++];
-			genre = data[i++];
-			detail = data[i++];
-			listener = data[i++];
-			relay = data[i++];
-			bitrate = data[i++];
-			stream_type = data[i++];
-			artist = data[i++];
-			album = data[i++];
-			title = data[i++];
-			url = data[i++];
-			encoded_name = data[i++];
-			time = data[i++];
-			alt = data[i++];
-			comment = data[i++];
-			direct = data[i++];
-			//update_time = data[i++];
 		}
 
 		public ChannelHistory(YP yp, string[] data)

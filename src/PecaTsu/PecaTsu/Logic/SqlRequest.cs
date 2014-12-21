@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace PecaTsu.Logic
@@ -29,6 +30,38 @@ namespace PecaTsu.Logic
 				for (int i = 0; i < myReader.FieldCount; i++)
 				{
 					data.Add(myReader.GetString(i));
+				}
+				list.Add(data);
+			}
+			myReader.Close();
+			myConnection.Close();
+
+			return list;
+		}
+
+		public static List<Type> requestSql<Type>(string sql)
+			where Type : new()
+		{
+			access(sql);
+
+			List<Type> list = new List<Type>();
+			while (myReader.Read())
+			{
+				Type data = new Type();
+				for (int i = 0; i < myReader.FieldCount; i++)
+				{
+					string name = myReader.GetName(i);
+					string dataTypeName = myReader.GetDataTypeName(i);
+					string value = myReader.GetString(i);
+
+					PropertyInfo[] properties = typeof(Type).GetProperties();
+					foreach (PropertyInfo property in properties)
+					{
+						if (property.Name == name)
+						{
+							property.SetValue(data, value);
+						}
+					}
 				}
 				list.Add(data);
 			}

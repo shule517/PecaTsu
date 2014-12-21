@@ -5,11 +5,8 @@ namespace PecaTsu.Entity
 {
 	class Channel
 	{
-		public Channel(string[] data)
+		public Channel()
 		{
-			int i = 0;
-			channel_id = data[i++];
-			channel_name =  data[i++];
 		}
 
 		/// <summary>
@@ -47,14 +44,15 @@ namespace PecaTsu.Entity
 		internal static string selectByChannelID(string channel_name)
 		{
 			string sql = string.Format("SELECT channel_id FROM channel WHERE channel_name = '{0}'", channel_name);
-			List<List<string>> result = SqlRequest.requestSql(sql);
-			if (result.Count <= 0)
+
+			List<Channel> result = SqlRequest.requestSql<Channel>(sql);
+
+			if (result.Count > 0)
 			{
-				return string.Empty;
+				return result[0].channel_id;
 			}
 
-			string channel_id = result[0][0];
-			return channel_id;
+			return string.Empty;
 		}
 
 		/// <summary>
@@ -63,16 +61,9 @@ namespace PecaTsu.Entity
 		public static List<Channel> selectAll()
 		{
 			string sql = string.Format("SELECT channel_id, channel_name FROM channel");
-			List<List<string>> result = SqlRequest.requestSql(sql);
 
-			List<Channel> list = new List<Channel>();
-			foreach (List<string> data in result)
-			{
-				Channel channel = new Channel(data.ToArray());
-				list.Add(channel);
-			}
-
-			return list;
+			List<Channel> result = SqlRequest.requestSql<Channel>(sql);
+			return result;
 		}
 
 		public string channel_id { get; set; }
