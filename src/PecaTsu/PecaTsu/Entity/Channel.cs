@@ -13,17 +13,17 @@ namespace PecaTsu.Entity
 		}
 
 		/// <summary>
-		/// チャンネル情報を登録
+		/// チャンネル情報を登録(複数)
 		/// </summary>
-		public static void Insert(string[] name_list)
+		public static void Insert(string[] names)
 		{
-			if (name_list.Length == 0)
+			if (names.Length == 0)
 			{
 				return;
 			}
 
 			string values = string.Empty;
-			foreach (string channel_name in name_list)
+			foreach (string channel_name in names)
 			{
 				values += "('" + channel_name + "'), ";
 			}
@@ -32,13 +32,19 @@ namespace PecaTsu.Entity
 			SqlRequest.requestSql(sql);
 		}
 
+		/// <summary>
+		/// チャンネル情報を登録
+		/// </summary>
 		public static void Insert(string channel_name)
 		{
 			string sql = string.Format("INSERT IGNORE INTO channel (channel_name) values ('{0}')", channel_name);
 			SqlRequest.requestSql(sql);
 		}
 
-		internal static string selectChannelID(string channel_name)
+		/// <summary>
+		/// チャンネルIDで検索
+		/// </summary>
+		internal static string selectByChannelID(string channel_name)
 		{
 			string sql = string.Format("SELECT channel_id FROM channel WHERE channel_name = '{0}'", channel_name);
 			List<List<string>> result = SqlRequest.requestSql(sql);

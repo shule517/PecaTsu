@@ -80,7 +80,7 @@ ORDER BY
 
 		public void insert()
 		{
-			channel_id = Channel.selectChannelID(channel_name);
+			channel_id = Channel.selectByChannelID(channel_name);
 			date = DateTime.Now.ToString("yyyyMMdd");
 			time_from = DateTime.Now.ToString("HHmmss");
 			time_to = DateTime.Now.ToString("HHmmss");
@@ -91,101 +91,62 @@ ORDER BY
 		public ChannelHistory(string[] data, bool test)
 		{
 			int i = 0;
-			date = data[i]; i++;
-			time_from = data[i]; i++;
-			time_to = data[i]; i++;
-			channel_id = data[i]; i++;
-			yp_id = data[i]; i++;
-			channel_name = data[i]; i++;
-			stream_id = data[i]; i++;
-			tip = data[i]; i++;
-			contact_url = data[i]; i++;
-			genre = data[i]; i++;
-			detail = data[i]; i++;
-			listener = data[i]; i++;
-			relay = data[i]; i++;
-			bitrate = data[i]; i++;
-			stream_type = data[i]; i++;
-			artist = data[i]; i++;
-			album = data[i]; i++;
-			title = data[i]; i++;
-			url = data[i]; i++;
-			encoded_name = data[i]; i++;
-			time = data[i]; i++;
-			alt = data[i]; i++;
-			comment = data[i]; i++;
-			direct = data[i]; i++;
-			update_time = data[i]; i++;
+			date = data[i++];
+			time_from = data[i++];
+			time_to = data[i++];
+			channel_id = data[i++];
+			yp_id = data[i++];
+			channel_name = data[i++];
+			stream_id = data[i++];
+			tip = data[i++];
+			contact_url = data[i++];
+			genre = data[i++];
+			detail = data[i++];
+			listener = data[i++];
+			relay = data[i++];
+			bitrate = data[i++];
+			stream_type = data[i++];
+			artist = data[i++];
+			album = data[i++];
+			title = data[i++];
+			url = data[i++];
+			encoded_name = data[i++];
+			time = data[i++];
+			alt = data[i++];
+			comment = data[i++];
+			direct = data[i++];
+			update_time = data[i++];
 		}
 
 
 		public ChannelHistory(string[] data)
 		{
 			int i = 0;
-			//date = data[i]; i++;
-			//time_from = data[i]; i++;
-			//time_to = data[i]; i++;
-			//channel_id = data[i]; i++;
-			//yp_id = data[i]; i++;
-			channel_name = data[i]; i++;
-			stream_id = data[i]; i++;
-			tip = data[i]; i++;
-			contact_url = data[i]; i++;
-			genre = data[i]; i++;
-			detail = data[i]; i++;
-			listener = data[i]; i++;
-			relay = data[i]; i++;
-			bitrate = data[i]; i++;
-			stream_type = data[i]; i++;
-			artist = data[i]; i++;
-			album = data[i]; i++;
-			title = data[i]; i++;
-			url = data[i]; i++;
-			encoded_name = data[i]; i++;
-			time = data[i]; i++;
-			alt = data[i]; i++;
-			comment = data[i]; i++;
-			direct = data[i]; i++;
-			//update_time = data[i]; i++;
-		}
-
-		public ChannelHistory(string[] data, string date, string time_from, string time_to, string channel_id, string update_time)
-		{
-			int i = 0;
-			date = "";
-			time_from = "";
-			time_to = "";
-			channel_id = "";
-			yp_id = "";
-			update_time = "";
-
-			/*
-			date = data[i]; i++;
-			time_from = data[i]; i++;
-			time_to = data[i]; i++;
-			channel_id = data[i]; i++;
-			yp_id = data[i]; i++;
-			 */
-			channel_name = data[i]; i++;
-			stream_id = data[i]; i++;
-			tip = data[i]; i++;
-			contact_url = data[i]; i++;
-			genre = data[i]; i++;
-			detail = data[i]; i++;
-			listener = data[i]; i++;
-			relay = data[i]; i++;
-			bitrate = data[i]; i++;
-			stream_type = data[i]; i++;
-			artist = data[i]; i++;
-			album = data[i]; i++;
-			title = data[i]; i++;
-			url = data[i]; i++;
-			encoded_name = data[i]; i++;
-			time = data[i]; i++;
-			alt = data[i]; i++;
-			comment = data[i]; i++;
-			direct = data[i]; i++;
-			//update_time = data[i]; i++;
+			//date = data[i++];
+			//time_from = data[i++];
+			//time_to = data[i++];
+			//channel_id = data[i++];
+			//yp_id = data[i++];
+			channel_name = data[i++];
+			stream_id = data[i++];
+			tip = data[i++];
+			contact_url = data[i++];
+			genre = data[i++];
+			detail = data[i++];
+			listener = data[i++];
+			relay = data[i++];
+			bitrate = data[i++];
+			stream_type = data[i++];
+			artist = data[i++];
+			album = data[i++];
+			title = data[i++];
+			url = data[i++];
+			encoded_name = data[i++];
+			time = data[i++];
+			alt = data[i++];
+			comment = data[i++];
+			direct = data[i++];
+			//update_time = data[i++];
 		}
 
 		public ChannelHistory(YP yp, string[] data)
