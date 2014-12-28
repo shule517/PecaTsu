@@ -12,7 +12,7 @@ namespace PecaTsu.Logic
 		/// <summary>
 		/// YP情報の取り込み
 		/// </summary>
-		public void load()
+		public List<ChannelHistory> load()
 		{
 			// YP情報の取得
 			List<ChannelHistory> channelList = loadYPInfo();
@@ -41,6 +41,8 @@ namespace PecaTsu.Logic
 					channel.insert();
 				}
 			}
+
+			return channelList;
 		}
 
 		/// <summary>
