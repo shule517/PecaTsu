@@ -167,8 +167,8 @@ ORDER BY
 				// (time == channel.time) &&
 				// (alt == channel.alt) &&
 				(comment == channel.comment);
-			// (direct == channel.direct);
-			// (update_time == channel.update_time);
+				// (direct == channel.direct);
+				// (update_time == channel.update_time);
 		}
 	}
 }
