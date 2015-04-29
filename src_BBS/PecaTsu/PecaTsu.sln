@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PecaTsu", "PecaTsu\PecaTsu.csproj", "{5BF2C3DA-68E1-4864-A079-9E22E0576962}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YPReaderBatch", "YPReader\YPReaderBatch.csproj", "{7A8FA93A-5835-408E-8AD0-235588A8C368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PecaTsuCommon", "PecaTsuCommon\PecaTsuCommon.csproj", "{23C92D28-5792-4FB0-9B89-0C38EC3A0FE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5BF2C3DA-68E1-4864-A079-9E22E0576962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BF2C3DA-68E1-4864-A079-9E22E0576962}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BF2C3DA-68E1-4864-A079-9E22E0576962}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BF2C3DA-68E1-4864-A079-9E22E0576962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8FA93A-5835-408E-8AD0-235588A8C368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8FA93A-5835-408E-8AD0-235588A8C368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8FA93A-5835-408E-8AD0-235588A8C368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8FA93A-5835-408E-8AD0-235588A8C368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C92D28-5792-4FB0-9B89-0C38EC3A0FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C92D28-5792-4FB0-9B89-0C38EC3A0FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C92D28-5792-4FB0-9B89-0C38EC3A0FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C92D28-5792-4FB0-9B89-0C38EC3A0FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
