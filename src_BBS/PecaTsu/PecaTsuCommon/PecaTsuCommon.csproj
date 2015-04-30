@@ -33,6 +33,10 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -58,11 +62,13 @@
     <Compile Include="Bbs\Util\BbsUrlAnalyzer.cs" />
     <Compile Include="Bbs\Util\BbsUtil.cs" />
     <Compile Include="ChannelHistory.cs" />
+    <Compile Include="Dao\YPDao.cs" />
     <Compile Include="Entity\Channel.cs" />
     <Compile Include="Entity\ImageLink.cs" />
     <Compile Include="Entity\BBSResponse.cs" />
     <Compile Include="Entity\BBSThread.cs" />
     <Compile Include="Entity\YP.cs" />
+    <Compile Include="Util\DBUtil.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\Serializer.cs" />
     <Compile Include="Util\SettingSerializer.cs" />
@@ -71,9 +77,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Settings\DBAccess.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

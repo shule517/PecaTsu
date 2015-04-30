@@ -1,5 +1,8 @@
 ﻿using PecaTsuCommon;
 using PecaTsuCommon.Bbs;
+using PecaTsuCommon.Dao;
+using PecaTsuCommon.Entity;
+using PecaTsuCommon.Util;
 using PeerstLib.Bbs.Data;
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,11 @@ namespace YPReaderBatch
     {
         static void Main(string[] args)
         {
+            DBUtil.Connect();
+
+            List<YP> ypList = YPDao.Select();
+
+            /*
             List<string> urlList = new List<string>();
             urlList.AddRange(YPReader.Read("http://temp.orz.hm/yp/"));
             urlList.AddRange(YPReader.Read("http://bayonet.ddo.jp/sp/"));
@@ -46,6 +54,7 @@ namespace YPReaderBatch
                 {
                 }
             }
+             */
         }
     }
 }

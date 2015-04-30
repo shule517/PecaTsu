@@ -5,7 +5,7 @@ namespace PecaTsuCommon.Entity
     /// <summary>
     /// YPマスター
     /// </summary>
-    class YP
+    public class YP
     {
         /// <summary>
         /// YPID

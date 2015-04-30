@@ -5,7 +5,7 @@ namespace PecaTsuCommon.Entity
     /// <summary>
     /// 配信者マスター
     /// </summary>
-    class Channel
+    public class Channel
     {
         /// <summary>
         /// 配信者ID

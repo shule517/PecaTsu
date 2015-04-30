@@ -5,7 +5,7 @@ namespace PecaTsuCommon.Entity
     /// <summary>
     /// 画像リンク情報
     /// </summary>
-    class ImageLink
+    public class ImageLink
     {
         /// <summary>
         /// スレッドURL

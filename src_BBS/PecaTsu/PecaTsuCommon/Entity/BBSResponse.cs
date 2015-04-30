@@ -5,7 +5,7 @@ namespace PecaTsuCommon.Entity
     /// <summary>
     /// レス情報
     /// </summary>
-    class BBSResponse
+    public class BBSResponse
     {
         /// <summary>
         /// スレッドURL

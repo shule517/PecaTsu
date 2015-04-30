@@ -5,7 +5,7 @@ namespace PecaTsuCommon.Entity
     /// <summary>
     /// スレッド情報
     /// </summary>
-    class BBSThread
+    public class BBSThread
     {
         /// <summary>
         /// 配信者ID
