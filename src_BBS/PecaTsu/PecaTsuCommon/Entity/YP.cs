@@ -8,6 +8,11 @@ namespace PecaTsuCommon.Entity
     class YP
     {
         /// <summary>
+        /// YPID
+        /// </summary>
+        public int YPId { get; set; }
+
+        /// <summary>
         /// YPアドレス
         /// </summary>
         public string YPUrl { get; set; }
