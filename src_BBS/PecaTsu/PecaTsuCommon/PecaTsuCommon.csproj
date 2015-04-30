@@ -58,6 +58,11 @@
     <Compile Include="Bbs\Util\BbsUrlAnalyzer.cs" />
     <Compile Include="Bbs\Util\BbsUtil.cs" />
     <Compile Include="ChannelHistory.cs" />
+    <Compile Include="Entity\Channel.cs" />
+    <Compile Include="Entity\ImageLink.cs" />
+    <Compile Include="Entity\BBSResponse.cs" />
+    <Compile Include="Entity\BBSThread.cs" />
+    <Compile Include="Entity\YP.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\Serializer.cs" />
     <Compile Include="Util\SettingSerializer.cs" />
@@ -68,6 +73,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
