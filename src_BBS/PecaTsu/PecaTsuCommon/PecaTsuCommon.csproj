@@ -63,6 +63,7 @@
     <Compile Include="Bbs\Util\BbsUtil.cs" />
     <Compile Include="ChannelHistory.cs" />
     <Compile Include="Dao\YPDao.cs" />
+    <Compile Include="Dto\ChannelDetail.cs" />
     <Compile Include="Entity\Channel.cs" />
     <Compile Include="Entity\ImageLink.cs" />
     <Compile Include="Entity\BBSResponse.cs" />

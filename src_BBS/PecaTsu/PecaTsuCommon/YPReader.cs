@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PecaTsuCommon.Dto;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,28 +16,28 @@ namespace PecaTsuCommon
         {
         }
 
-        public static List<string> Read(string url)
+        /// <summary>
+        /// YPからチャンネル情報を取得
+        /// </summary>
+        /// <param name="ypUrl">YPのアドレス</param>
+        /// <returns>チャンネル詳細</returns>
+        public static List<ChannelDetail> Read(string ypUrl)
         {
             // index.txtを取得
-            string indexUrl = url + "index.txt";
+            string indexUrl = ypUrl + "index.txt";
             string source = GetHtmlSource(indexUrl);
 
             // チャンネル情報一覧を取得
+            List<ChannelDetail> channelDetailList = new List<ChannelDetail>();
             var lines = source.Split("\n".ToCharArray()).Where(e => !string.IsNullOrEmpty(e));
-
-            List<string> urlList = new List<string>();
             foreach (var line in lines)
             {
-                string[] elem = line.Split("<>".ToCharArray());
-                string contactUrl = elem[6];
-                urlList.Add(contactUrl);
-                /*
-                ChannelHistory history = new ChannelHistory(elem);
-                channelList.Add(history);
-                 */
+                string[] indexTextElem = line.Split(new string[] { "<>" }, System.StringSplitOptions.None);
+                ChannelDetail detail = new ChannelDetail(indexTextElem);
+                channelDetailList.Add(detail);
             }
 
-            return urlList;
+            return channelDetailList;
         }
 
         /// <summary>

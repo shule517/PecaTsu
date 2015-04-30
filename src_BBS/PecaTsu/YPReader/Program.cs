@@ -1,6 +1,7 @@
 ﻿using PecaTsuCommon;
 using PecaTsuCommon.Bbs;
 using PecaTsuCommon.Dao;
+using PecaTsuCommon.Dto;
 using PecaTsuCommon.Entity;
 using PecaTsuCommon.Util;
 using PeerstLib.Bbs.Data;
@@ -18,13 +19,14 @@ namespace YPReaderBatch
 
             List<YP> ypList = YPDao.Select();
 
+            List<ChannelDetail> channelDetails = new List<ChannelDetail>();
+            foreach (YP yp in ypList)
+            {
+                List<ChannelDetail> details = YPReader.Read(yp.YPUrl);
+                channelDetails.AddRange(details);
+            }
+
             /*
-            List<string> urlList = new List<string>();
-            urlList.AddRange(YPReader.Read("http://temp.orz.hm/yp/"));
-            urlList.AddRange(YPReader.Read("http://bayonet.ddo.jp/sp/"));
-
-
-
             List<string> imgList = new List<string>();
             foreach (string contactUrl in urlList)
             {
