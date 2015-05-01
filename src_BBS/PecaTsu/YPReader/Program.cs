@@ -33,8 +33,8 @@ namespace YPReaderBatch
             // レス情報の更新
             UpdateBBSResponse();
 
+            /*
             List<string> imgList = new List<string>();
-
             // レス一覧の取得
             List<BBSResponse> resList = BBSResponseDao.Select();
             foreach (BBSResponse res in resList)
@@ -48,7 +48,7 @@ namespace YPReaderBatch
                     ImageLinkDao.Insert(res.ThreadUrl, res.ResNo, imageUrl, res.WriteTime);
                 }
             }
-
+             */
 
             List<ImageLink> imageList = ImageLinkDao.Select();
 
@@ -70,6 +70,8 @@ namespace YPReaderBatch
 
         private static void UpdateBBSResponse()
         {
+            // チャンネル一覧
+            List<Channel> channelList = ChannelDao.Select();
             // レス読み込み
             List<BBSThread> threadList = BBSThreadDao.Select();
             // スレッドURLの重複をはずす
@@ -101,6 +103,19 @@ namespace YPReaderBatch
 
                 // 掲示板の更新(スレッドストップを更新)
                 BBSThreadDao.Update(thread.ChannelId, thread.ThreadUrl, maxResNo, isThreadStop);
+
+                // Link抽出
+                foreach (ResInfo res in resList)
+                {
+                    Match match = Regex.Match(res.Message, @"ttp://.*\.(jpg|JPG|jpeg|JPEG|bmp|BMP|png|PNG)");
+
+                    if (match.Success)
+                    {
+                        string channelName = channelList.Where(e => e.ChannelId == thread.ChannelId).Single().ChannelName;
+                        string imageUrl = "h" + match.Value;
+                        ImageLinkDao.Insert(thread.ThreadUrl, channelName, imageUrl, res);
+                    }
+                }
             }
         }
 
