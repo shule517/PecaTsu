@@ -6,6 +6,7 @@ using PecaTsuCommon.Entity;
 using PecaTsuCommon.Util;
 using PeerstLib.Bbs.Data;
 using PeerstLib.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -48,22 +49,21 @@ namespace YPReaderBatch
                 }
             }
 
-            /*
-            int i = 0;
-            foreach (string imageUrl in imgList)
+
+            List<ImageLink> imageList = ImageLinkDao.Select();
+
+            foreach (ImageLink link in imageList)
             {
                 try
                 {
                     System.Net.WebClient wc = new System.Net.WebClient();
-                    wc.DownloadFile(imageUrl, @"S:\MyDocument_201503\dev\github\PecaTsu_BBS\src_BBS\img\" + i++ + ".jpg");
+                    wc.DownloadFile(link.ImageUrl, @"S:\MyDocument_201503\dev\github\PecaTsu_BBS\src_BBS\img\" + (link.WriteTime.Replace("/", "").Replace(":", "")) + ".jpg");
                     wc.Dispose();
                 }
                 catch (Exception)
                 {
                 }
             }
-            // TODO DEBUG END
-             */
 
             DBUtil.Close();
         }
@@ -72,6 +72,12 @@ namespace YPReaderBatch
         {
             // レス読み込み
             List<BBSThread> threadList = BBSThreadDao.Select();
+            // スレッドURLの重複をはずす
+            threadList = threadList.GroupBy(e => e.ThreadUrl).Select(e => e.First()).ToList();
+
+            // 登録済みレス一覧
+            List<BBSResponse> savedResList = BBSResponseDao.Select();
+
             foreach (BBSThread thread in threadList)
             {
                 // スレッドストップしていたらスルー
@@ -83,7 +89,9 @@ namespace YPReaderBatch
                 BbsReader reader = new BbsReader();
                 bool isThreadStop;
                 List<ResInfo> resList = reader.ReadRes(thread.ThreadUrl, out isThreadStop);
-                resList = resList.Where(res => int.Parse(res.ResNo) > thread.MaxResNo).ToList();
+                resList = resList.Where(res => int.Parse(res.ResNo) > thread.MaxResNo)
+                    .Where(res => !savedResList.Any(e => e.ThreadUrl == thread.ThreadUrl && e.ResNo.ToString() == res.ResNo))
+                    .ToList();
 
                 // レスの追加
                 BBSResponseDao.Insert(thread.ThreadUrl, resList);

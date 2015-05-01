@@ -61,7 +61,6 @@
     <Compile Include="Bbs\Strategy\YYKakikoBbsStrategy.cs" />
     <Compile Include="Bbs\Util\BbsUrlAnalyzer.cs" />
     <Compile Include="Bbs\Util\BbsUtil.cs" />
-    <Compile Include="ChannelHistory.cs" />
     <Compile Include="Dao\BBSResponseDao.cs" />
     <Compile Include="Dao\BBSThreadDao.cs" />
     <Compile Include="Dao\ChannelDao.cs" />
