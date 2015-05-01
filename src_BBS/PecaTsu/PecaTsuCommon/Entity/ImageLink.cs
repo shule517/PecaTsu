@@ -28,6 +28,11 @@ namespace PecaTsuCommon.Entity
         public string ImageUrl { get; set; }
 
         /// <summary>
+        /// 投稿日時
+        /// </summary>
+        public string WriteTime { get; set; }
+
+        /// <summary>
         /// 更新日時
         /// </summary>
         public DateTime UpdateTime { get; set; }

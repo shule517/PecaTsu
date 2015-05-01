@@ -18,6 +18,11 @@ namespace PecaTsuCommon.Entity
         public string ThreadUrl { get; set; }
 
         /// <summary>
+        /// 最大レス番号
+        /// </summary>
+        public int MaxResNo { get; set; }
+
+        /// <summary>
         /// スレッドストップフラグ
         /// </summary>
         public bool IsThreadStop { get; set; }

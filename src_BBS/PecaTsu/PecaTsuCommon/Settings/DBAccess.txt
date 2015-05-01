@@ -1,1 +1,1 @@
-﻿Data Source=***.***.***.***;Database=***;User ID=***;password=***
+﻿Data Source=peerst.jp;Database=PecaTsuBBS;User ID=peerst;password=Pasu6848

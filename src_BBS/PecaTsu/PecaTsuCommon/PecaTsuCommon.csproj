@@ -62,6 +62,10 @@
     <Compile Include="Bbs\Util\BbsUrlAnalyzer.cs" />
     <Compile Include="Bbs\Util\BbsUtil.cs" />
     <Compile Include="ChannelHistory.cs" />
+    <Compile Include="Dao\BBSResponseDao.cs" />
+    <Compile Include="Dao\BBSThreadDao.cs" />
+    <Compile Include="Dao\ChannelDao.cs" />
+    <Compile Include="Dao\ImageLinkDao.cs" />
     <Compile Include="Dao\YPDao.cs" />
     <Compile Include="Dto\ChannelDetail.cs" />
     <Compile Include="Entity\Channel.cs" />
@@ -78,8 +82,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

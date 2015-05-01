@@ -27,6 +27,14 @@ namespace PecaTsuCommon.Util
         }
 
         /// <summary>
+        /// DB切断
+        /// </summary>
+        public static void Close()
+        {
+            connection.Close();
+        }
+
+        /// <summary>
         /// DB検索(SELECT)
         /// </summary>
         /// <typeparam name="Type">Entityの型</typeparam>
@@ -96,6 +104,23 @@ namespace PecaTsuCommon.Util
 
                 data.Add(reader.GetString(i));
             }
+        }
+
+        /// <summary>
+        /// DB更新(INSERT/UPDATE)
+        /// </summary>
+        /// <param name="sql">SQL文</param>
+        /// <param name="paramDic">バインド変数</param>
+        public static void Update(string sql, Dictionary<string, string> paramDic)
+        {
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            foreach (var param in paramDic)
+            {
+                command.Parameters.Add(new MySqlParameter(param.Key, param.Value));
+            }
+            // command.Connection.Open();
+            command.ExecuteNonQuery();
+            // command.Connection.Clone();
         }
     }
 }
